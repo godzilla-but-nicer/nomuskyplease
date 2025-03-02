@@ -1,0 +1,9 @@
+{{ $menutitleContent := readFile "layouts/menu_title.md" }}
+{{ if and $menutitleContent (ne $menutitleContent "") }}
+        {{ $menutitleContent | markdownify }}
+{{ else }}
+    {{ warnf "layouts/footer.md file is not found or empty. Falling back to default footer." }}
+    <footer class="site-footer">
+        <p>&copy; {{ now.Format "2006" }} {{ site.Title }}</p>
+    </footer>
+{{ end }}
